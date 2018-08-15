@@ -1,15 +1,31 @@
 #include "Student.hpp"
 #include <stdexcept>
+#include <sstream>
+#include <iomanip>
  
-Student::Student(const std::string & name, const std::string & surname, const std::string & PESEL, char sex, const std::string & address, int index) :
+Student::Student(const std::string & name,
+                 const std::string & surname,
+                 const std::string & PESEL,
+                 char sex,
+                 const std::string & address,
+                 int index) :
     Person(name, surname, PESEL, sex, address),
     index_(index)
 {}
 
 Student::Student(const std::string & dataPacked) :
     Person(dataPacked),
-    index_() //needs implementation
+    index_(std::stoi(dataPacked.substr(96, 7))) //needs implementation
 {}
+
+std::string Student::toString(char delimeter) const
+{
+    std::stringstream ss;
+    ss << "Student: "
+       << Person::toString(delimeter)
+       << std::setw(7) << index_ << std::endl;
+    return ss.str();
+}
 
 int Student::getIndex() const
 {

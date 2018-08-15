@@ -117,24 +117,10 @@ void Database::saveToFile()
         throw std::runtime_error("unable to open file");
     else
     {
-        //after implementation metod toString() used
-        //for (auto person : persons_)
-        //{
-        //    file << person->toString();
-        //}
-        //insted below staff
-        for (size_t i = 0; i < persons_.size(); ++i)
+        for (auto person : persons_)
         {
-            file << persons_[i] -> getName() << "|"
-                 << persons_[i] -> getSurname() << "|"
-                 << persons_[i] -> getPESEL() << "|"
-                 << persons_[i] -> getSex() << "|"
-                 << persons_[i] -> getAddress() << "|"
-                 << persons_[i] -> getIndex() << "|"
-                 << persons_[i] -> getPayment() << "|"
-                 << std::endl;
+            file << person->toString();
         }
-        //to this line
         file.close();
         persons_.clear();
     }
@@ -148,56 +134,19 @@ void Database::readFromFile()
         throw std::runtime_error("unable to open file");
     else
     {
-        //after implementation metod toString() used 
-        //std::string line;
-        //while(std::getline(file, line))
-        //{
-        //      if (std::stoi(line.substr(140,10)))
-        //      {
-        //          std::shared_ptr<Person> worker = std::make_shared<Worker>(line);
-        //          addPerson(worker);
-        //      } else
-        //      {
-        //          std::shared_ptr<Person> student = std::make_shared<Student>(line);
-        //          addPerson(student);
-        //      }
-        //}
-        //deleted below staff
         std::string line;
-        std::string individualString;
-        char separator = '|';
-        std::vector<std::string>strVector;
         while(std::getline(file, line))
         {
-            std::stringstream stringStream_(line);
-            while(std::getline(stringStream_, individualString, separator))
-            {
-                strVector.push_back(individualString);
-            }
-            std::string name = strVector[0];
-            std::string surname = strVector[1];
-            std::string PESEL = strVector[2];
-            std::string strSex= strVector[3];
-            std::vector<char> cSex(strSex.c_str(), strSex.c_str() + strSex.size() + 1);
-            char sex = cSex[0];
-            std::string address = strVector[4];
-            std::string strIndex = strVector[5];
-            int index = std::stoi(strIndex);
-            std::string strPayment = strVector[6];
-            int payment = std::stoi(strPayment);
-            if ( payment > 0)
-            {
-                std::shared_ptr<Person> workerPtr = std::make_shared<Worker> (name, surname, PESEL, sex, address, payment);
-                addPerson(workerPtr);
-            }
-            else
-            {
-                std::shared_ptr<Person> studentPtr = std::make_shared<Student> (name, surname, PESEL, sex, address, index);
-                addPerson(studentPtr);
-            }
-            strVector.clear();
+              if (std::stoi(line.substr(140,10)))
+              {
+                  std::shared_ptr<Person> worker = std::make_shared<Worker>(line);
+                  addPerson(worker);
+              } else
+              {
+                  std::shared_ptr<Person> student = std::make_shared<Student>(line);
+                  addPerson(student);
+              }
         }
-        //for this line
         file.close();
     }
 }
@@ -285,17 +234,7 @@ void Database::printNamesTable() const
 
 void Database::printDataPerson(std::shared_ptr<Person> person) const
 {
-    //after implementation metod toString() used
-    //std::cout << person->toString(); 
-    //insted below staf
-     std::cout << std::left << std::setw(20)
-               << person->getPESEL() << std::setw(20)
-               << person->getName() << std::setw(20)
-               << person->getSurname() << std::setw(20)
-               << person->getSex() << std::setw(40)
-               << person->getAddress() << std::setw(20)
-               << person->getIndex() << std::setw(20)
-               << person->getPayment() << std::endl;
+    std::cout << person->toString();
 }
 
 int Database::getNumberOfPersons() const

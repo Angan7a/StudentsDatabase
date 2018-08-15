@@ -23,5 +23,5 @@ public:
     char getSex() const;
     virtual int getIndex() const;
     virtual ~Person();
-    std::string toString() const;
+    virtual std::string toString(char delimeter = ' ') const;
 };
