@@ -11,6 +11,7 @@ class Person
     std::string address_;
 public:
     Person(const std::string & name, const std::string & surname, const std::string & PESEL, char sex, const std::string & address);
+    Person(const std::string & dataPacked);
     virtual int getPayment() const = 0;
     std::string getName() const;
     std::string getPESEL() const;
@@ -22,4 +23,5 @@ public:
     char getSex() const;
     virtual int getIndex() const;
     virtual ~Person();
+    std::string toString() const;
 };

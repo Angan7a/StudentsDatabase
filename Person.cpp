@@ -12,6 +12,17 @@ Person::Person(const std::string & name, const std::string & surname, const std:
     PESEL_ = PESEL;
 }
 
+Person::Person(const std::string & dataPacked) :
+    name_( ),//need implemantation
+    surname_(),//need implemantation
+    sex_(),//need implemantation
+    address_()//need implemantation
+{
+    std::string PESEL; //need implemantation
+    if (!Person::checkPESEL(PESEL)) throw std::invalid_argument("Bad PESEL");
+    PESEL_ = PESEL;
+}
+
 std::string Person::getSurname() const
 {
     return surname_;
@@ -65,4 +76,10 @@ int Person::getIndex() const
 {
     return std::numeric_limits<int>::max();
 }
+
 Person::~Person() {}
+
+std::string Person::toString() const
+{
+    //needs implementation
+}

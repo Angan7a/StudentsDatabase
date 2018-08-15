@@ -117,6 +117,12 @@ void Database::saveToFile()
         throw std::runtime_error("unable to open file");
     else
     {
+        //after implementation metod toString() used
+        //for (auto person : persons_)
+        //{
+        //    file << person->toString();
+        //}
+        //insted below staff
         for (size_t i = 0; i < persons_.size(); ++i)
         {
             file << persons_[i] -> getName() << "|"
@@ -128,6 +134,7 @@ void Database::saveToFile()
                  << persons_[i] -> getPayment() << "|"
                  << std::endl;
         }
+        //to this line
         file.close();
         persons_.clear();
     }
@@ -141,6 +148,21 @@ void Database::readFromFile()
         throw std::runtime_error("unable to open file");
     else
     {
+        //after implementation metod toString() used 
+        //std::string line;
+        //while(std::getline(file, line))
+        //{
+        //      if (std::stoi(line.substr(140,10)))
+        //      {
+        //          std::shared_ptr<Person> worker = std::make_shared<Worker>(line);
+        //          addPerson(worker);
+        //      } else
+        //      {
+        //          std::shared_ptr<Person> student = std::make_shared<Student>(line);
+        //          addPerson(student);
+        //      }
+        //}
+        //deleted below staff
         std::string line;
         std::string individualString;
         char separator = '|';
@@ -175,6 +197,7 @@ void Database::readFromFile()
             }
             strVector.clear();
         }
+        //for this line
         file.close();
     }
 }
@@ -262,6 +285,9 @@ void Database::printNamesTable() const
 
 void Database::printDataPerson(std::shared_ptr<Person> person) const
 {
+    //after implementation metod toString() used
+    //std::cout << person->toString(); 
+    //insted below staf
      std::cout << std::left << std::setw(20)
                << person->getPESEL() << std::setw(20)
                << person->getName() << std::setw(20)

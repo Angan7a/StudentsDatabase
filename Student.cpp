@@ -6,6 +6,11 @@ Student::Student(const std::string & name, const std::string & surname, const st
     index_(index)
 {}
 
+Student::Student(const std::string & dataPacked) :
+    Person(dataPacked),
+    index_() //needs implementation
+{}
+
 int Student::getIndex() const
 {
     return index_;
