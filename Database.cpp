@@ -137,7 +137,7 @@ void Database::readFromFile()
         std::string line;
         while(std::getline(file, line))
         {
-              if (std::stoi(line.substr(140,10)))
+              if (std::stoi(line.substr(101,10)))
               {
                   std::shared_ptr<Person> worker = std::make_shared<Worker>(line);
                   addPerson(worker);
