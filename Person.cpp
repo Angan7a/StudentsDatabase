@@ -1,8 +1,14 @@
 #include "Person.hpp"
 #include <stdexcept>
+#include <sstream>
+#include <iomanip>
 #include <limits>
 
-Person::Person(const std::string & name, const std::string & surname, const std::string & PESEL, char sex, const std::string & address) :
+Person::Person(const std::string & name,
+               const std::string & surname,
+               const std::string & PESEL,
+               char sex,
+               const std::string & address) :
     name_(name),
     surname_(surname),
     sex_(sex),
@@ -13,16 +19,18 @@ Person::Person(const std::string & name, const std::string & surname, const std:
 }
 
 Person::Person(const std::string & dataPacked) :
-    name_( ),//need implemantation
-    surname_(),//need implemantation
-    sex_(),//need implemantation
-    address_()//need implemantation
-{
+    name_(dataPacked.substr(10, 14)),//need implemantation
+    surname_(dataPacked.substr(25, 14)),//need implemantation
+    PESEL_(dataPacked.substr(40, 11)),
+    sex_(dataPacked.substr(52, 1) == "M"),//need implemantation
+    address_(dataPacked.substr(54, 40))//need implemantation
+{}
+/*{
     std::string PESEL; //need implemantation
     if (!Person::checkPESEL(PESEL)) throw std::invalid_argument("Bad PESEL");
-    PESEL_ = PESEL;
+    PESEL_(dataPacked.substr(40, 11));
 }
-
+*/
 std::string Person::getSurname() const
 {
     return surname_;
@@ -79,7 +87,13 @@ int Person::getIndex() const
 
 Person::~Person() {}
 
-std::string Person::toString() const
+std::string Person::toString(char delimeter) const
 {
-    //needs implementation
+    std::stringstream ss;
+    ss << std::setw(14) << name_ << delimeter
+       << std::setw(14) << surname_ << delimeter
+       << std::setw(11) << PESEL_ << delimeter
+       << std::setw(1) << static_cast<char>(sex_) << delimeter
+       << std::setw(40) << address_ << delimeter;
+    return ss.str();
 }
