@@ -52,22 +52,10 @@ void Person::setAddress(const std::string & address)
 }
 
 bool Person::checkPESEL(const std::string & PESEL) 
-{
+{    
     if (PESEL.size() != 11) return false;
-    int sum = 0;
-    sum = (PESEL[0] - 48) * 9 +
-          (PESEL[1] - 48) * 7 +
-          (PESEL[2] - 48) * 3 +
-          (PESEL[3] - 48) * 1 +
-          (PESEL[4] - 48) * 9 +
-          (PESEL[5] - 48) * 7 +
-          (PESEL[6] - 48) * 3 +
-          (PESEL[7] - 48) * 1 +
-          (PESEL[8] - 48) * 9 +
-          (PESEL[9] - 48) * 7;
-    if (sum == 0) return false;
-    if ((sum%10) == (PESEL[10] - 48)) return true;
-    return false;
+
+    return isPeselValid(PESEL);
 }
 
 std::string Person::getAddress() const

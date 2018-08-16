@@ -1,12 +1,13 @@
 #include "Database.hpp"
 #include "Person.hpp"
 #include "Worker.hpp"
+#include "PeselValidation.hpp"
 #include <iostream>
 
 int main()
 {
     Database db;
-    
+  
     std::cout << "===== Try find person with PESEL - 123 - in empty database" << std::endl;
     try
     {
@@ -21,7 +22,7 @@ int main()
     try
     {
         db.fillDB(5, 8);
-        std::shared_ptr<Person> worker = std::make_shared<Worker>("Katarzyna", "Nowak", "12345678903", 'W', "Wroclaw, Staszica 12", 99789);
+        std::shared_ptr<Person> worker = std::make_shared<Worker>("Katarzyna", "Nowak", "85091205707", 'W', "Wroclaw, Staszica 12", 99789);
         db.addPerson(worker);
         std::cout << "===== Show database" << std::endl;
         db.showDB();
