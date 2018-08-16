@@ -68,7 +68,7 @@ iterator Database::findPersonWithPESEL(const std::string & PESEL)
     if (persons_.empty()) throw std::invalid_argument("Database is empty!");
     auto iter = find([PESEL](const auto & person_){return person_->getPESEL() == PESEL;}, begin(persons_));
     std::string message = "There is no person with PESEL - " + PESEL + " in the database";
-    if (iter == end(persons_)) throw std::invalid_argument(message);
+    if (iter == end(persons_)) throw std::invalid_argument(message);  
     return iter;
 }
 
@@ -200,14 +200,23 @@ void Database::getData(std::string & name,
                                         "Piekna", "Opolska", 
                                         "Dluga", "Zielinskiego", 
                                         "Borowska"};
-    PESEL = std::to_string(getRandom(100000, 999999));
-    PESEL += std::to_string(getRandom(10000, 99999));
-    for (int i = 0; i < 10; i++)
+    std::vector<std::string> pesel = {"78101259412", "79101234616", 
+                                       "79101231606", "80101255404", 
+                                        "80041207815", "89041776516", 
+                                        "89121782400"};
+    for (int i = 0; i < 7; i++) 
     {
-        PESEL.pop_back();
-        PESEL += std::to_string(i);
+        PESEL = pesel[getRandom(0, pesel.size() - 1)];
         if (Person::checkPESEL(PESEL)) break;
-    }
+    }                              
+    //PESEL = std::to_string(getRandom(100000, 999999));
+    //PESEL += std::to_string(getRandom(10000, 99999));
+   // for (int i = 0; i < 10; i++)
+   // {
+    //    PESEL.pop_back();
+    //    PESEL += std::to_string(i);
+    //    if (Person::checkPESEL(PESEL)) break;
+    //}
     name = names[getRandom(0, names.size() - 1)];
     surname = surnames[getRandom(0, surnames.size() - 1)];
     address = cities[getRandom(0, cities.size() - 1)] + ", " 

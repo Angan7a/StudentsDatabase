@@ -1,0 +1,7 @@
+Student:          Kasia       Owczarek 80101255404 W                         Lodz, Opolska 70             24955
+Student:        Zuzanna        Borowek 89121782400 W                      Poznan, Borowska 98             89454
+Student:          Piotr       Adamczyk 89041776516 M                        Krakow, Ciepla 84             85300
+Worker:         Zuzanna     Jackiewicz 78101259412 W                         Krakow, Ciepla 4    5159 PLN
+Worker:             Jan       Owczarek 79101231606 M                        Poznan, Ciepla 68   13623 PLN
+Worker:          Bogdan          Nowak 79101234616 M                          Lodz, Piekna 18   12708 PLN
+Worker:            Anna       Owczarek 80041207815 W                        Opole, Borowska 6    3612 PLN

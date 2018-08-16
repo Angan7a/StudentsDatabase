@@ -2,6 +2,7 @@
 #include "Database.hpp"
 #include "Student.hpp"
 #include "Worker.hpp"
+#include "PeselValidation.hpp"
 #include <iostream>
 #include "catch.hpp"
 
@@ -23,18 +24,18 @@ TEST_CASE("Testing find person")
             }
             GIVEN("Fill the database random data 15 students and 18 workers")
             {
-                db.fillDB(15, 18);
+                db.fillDB(5, 8);
                 THEN("Finding person with PESEL - 123 - no in the database")
                 {
                     REQUIRE_THROWS_WITH(*(db.findPersonWithPESEL("123")),"Bad PESEL");
                 }
                 WHEN("Added person to database")
                 {
-                    std::shared_ptr<Person> student = std::make_shared<Student>("Katarzyna", "Nowak", "12345678903", 'W', "Wroclaw, Staszica 12", 99789);
+                    std::shared_ptr<Person> student = std::make_shared<Student>("Katarzyna", "Nowak", "66040170503", 'W', "Wroclaw, Staszica 12", 99789);
                     db.addPerson(student);
-                    THEN("Finding person with PESEL - 12345678903 - existe in the database")
+                    THEN("Finding person with PESEL - 66040170503 - existe in the database")
                     {
-                        REQUIRE(*(db.findPersonWithPESEL("12345678903")) == student);
+                        REQUIRE(*(db.findPersonWithPESEL("66040170503")) == student);
                     }
                 }
             }
@@ -51,7 +52,9 @@ TEST_CASE("Testing find person")
             }
             GIVEN("Fill the database random data 15 students and 18 workers")
             {
-                db.fillDB(15, 18);
+                db.fillDB(5, 8);
+                std::shared_ptr<Person> worker = std::make_shared<Worker>("Katarzyna", "Lis", "44121786205", 'W', "Wroclaw, Staszica 12", 99789);
+                db.addPerson(worker);
                 THEN("Finding person with surname - Kot - no in the database")
                 {
                     REQUIRE_THROWS_WITH(db.findPersonWithSurname("Kot"),"There isn't person with surname Kot");
@@ -82,7 +85,7 @@ TEST_CASE("Testing sort")
             }
             GIVEN("Fill the database random data 15 students and 18 workers")
             {
-                db.fillDB(15, 18);
+                db.fillDB(5, 8);
                 THEN("Sort person by PESEL in database")
                 {
                     db.sortByPESEL();
@@ -107,7 +110,7 @@ TEST_CASE("Testing sort")
             }
             GIVEN("Fill the database random data 15 students and 18 workers")
             {
-                db.fillDB(15, 18);
+                db.fillDB(5, 8);
                 THEN("Sort person by surname in database")
                 {
                     db.sortBySurname();
@@ -132,7 +135,7 @@ TEST_CASE("Testing sort")
             }
             GIVEN("Fill the database random data 15 students and 18 workers")
             {
-                db.fillDB(15, 18);
+                db.fillDB(5, 8);
                 THEN("Sort person by payment in database")
                 {
                     db.sortByPayment();
@@ -179,9 +182,9 @@ TEST_CASE("Testing check PESEL")
     }
     SECTION("Test correct PESEL")
     {
-        WHEN("PESEL is 12345678903")
+        WHEN("PESEL is 89121782400")
         {
-            std::string PESEL = "12345678903";
+            std::string PESEL = "89121782400";
             THEN("Check PESEL")
                 REQUIRE(Person::checkPESEL(PESEL) == true);
         }
@@ -205,19 +208,19 @@ TEST_CASE("Testing erase person with PESEL")
             }
             GIVEN("Fill the database random data 15 students and 18 workers")
             {
-                db.fillDB(15, 18);
+                db.fillDB(5, 8);
                 THEN("Erase person with PESEL - 123 - no in the database")
                 {
                     REQUIRE_THROWS_WITH(db.removePersonWithPESEL("123"),"Bad PESEL");
                 }
                 WHEN("Added person to database")
                 {
-                    std::shared_ptr<Person> student = std::make_shared<Student>("Katarzyna", "Nowak", "12345678903", 'W', "Wroclaw, Staszica 12", 99789);
+                    std::shared_ptr<Person> student = std::make_shared<Student>("Katarzyna", "Nowak", "89121782400", 'W', "Wroclaw, Staszica 12", 99789);
                     db.addPerson(student);
-                    THEN("Erase person with PESEL - 12345678903 - existe in the database")
+                    THEN("Erase person with PESEL - 8912178243400 - existe in the database")
                     {
-                        db.removePersonWithPESEL("12345678903");
-                        REQUIRE_THROWS_WITH(*(db.findPersonWithPESEL("12345678903")), "There is no person with PESEL - 12345678903 in the database");
+                        db.removePersonWithPESEL("89121782400");
+                        REQUIRE_THROWS_WITH(*(db.findPersonWithPESEL("89121782400")), "There is no person with PESEL - 89121782400 in the database");
                     }
                 }
             }
@@ -238,7 +241,7 @@ TEST_CASE("Testing save and read file")
             }
             GIVEN("Fill the database random data 15 students and 18 workers")
             {
-                db.fillDB(15, 18);
+                db.fillDB(5, 8);
                 THEN("Save database to file")
                 {
                     db.saveToFile();
@@ -262,16 +265,16 @@ TEST_CASE("Change address and payment by PESEL")
         GIVEN("A no empty database")
         {
             Database db;
-            db.fillDB(15, 18);
+            db.fillDB(5, 8);
             WHEN("Added worker to database")
             {
-                std::shared_ptr<Person> worker = std::make_shared<Worker>("Katarzyna", "Nowak", "12345678903", 'W', "Wroclaw, Staszica 12", 3000);
+                std::shared_ptr<Person> worker = std::make_shared<Worker>("Katarzyna", "Nowak", "43061710615", 'W', "Wroclaw, Staszica 12", 3000);
                 db.addPerson(worker);
-                THEN("Change address and payment person with PESEL - 12345678903")
+                THEN("Change address and payment person with PESEL - 43061710615")
                 {
-                    db.changeAddressPaymentPersonWithPESEL("12345678903", "Londyn", 8000);
-                    REQUIRE((*db.findPersonWithPESEL("12345678903"))->getAddress() == "Londyn");
-                    REQUIRE((*db.findPersonWithPESEL("12345678903"))->getPayment() == 8000);
+                    db.changeAddressPaymentPersonWithPESEL("43061710615", "Londyn", 8000);
+                    REQUIRE((*db.findPersonWithPESEL("43061710615"))->getAddress() == "Londyn");
+                    REQUIRE((*db.findPersonWithPESEL("43061710615"))->getPayment() == 8000);
                 }
             }
         }
@@ -281,14 +284,14 @@ TEST_CASE("Change address and payment by PESEL")
         GIVEN("A no empty database")
         {
             Database db;
-            db.fillDB(15, 18);
+            db.fillDB(5, 8);
             WHEN("Added student to database")
             {
-                std::shared_ptr<Person> student = std::make_shared<Student>("Katarzyna", "Nowak", "12345678903", 'W', "Wroclaw, Staszica 12", 3000);
+                std::shared_ptr<Person> student = std::make_shared<Student>("Katarzyna", "Nowak", "49061785514", 'W', "Wroclaw, Staszica 12", 3000);
                 db.addPerson(student);
-                THEN("Change address and payment person with PESEL - 12345678903")
+                THEN("Change address and payment person with PESEL - 49061785514")
                 {
-                    REQUIRE_THROWS(db.changeAddressPaymentPersonWithPESEL("12345678903", "Londyn", 8000));
+                    REQUIRE_THROWS(db.changeAddressPaymentPersonWithPESEL("49061785514", "Londyn", 8000));
                 }
             }
         }
