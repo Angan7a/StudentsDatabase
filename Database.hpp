@@ -21,8 +21,6 @@ public:
     void saveToFile();
     void readFromFile();
     void fillDB(int numberOfStudnets, int numberOfWorkers);
-    void printNamesTable() const;
-    void printDataPerson(std::shared_ptr<Person> it) const;
     int getNumberOfPersons() const;
     std::vector<std::shared_ptr<Person>>::iterator getFirstIterOfPerson();
     void sort(std::function<bool(std::shared_ptr<Person> &,std::shared_ptr<Person> &)> what);

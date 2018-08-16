@@ -15,7 +15,7 @@ Student::Student(const std::string & name,
 
 Student::Student(const std::string & dataPacked) :
     Person(dataPacked),
-    index_(std::stoi(dataPacked.substr(96, 7))) //needs implementation
+    index_(std::stoi(dataPacked.substr(106, 7))) //needs implementation
 {}
 
 std::string Student::toString(char delimeter) const
@@ -23,7 +23,7 @@ std::string Student::toString(char delimeter) const
     std::stringstream ss;
     ss << "Student: "
        << Person::toString(delimeter)
-       << std::setw(7) << index_ << std::endl;
+       << std::setw(17) << index_ << std::endl;
     return ss.str();
 }
 

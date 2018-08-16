@@ -21,8 +21,8 @@ Person::Person(const std::string & name,
 Person::Person(const std::string & dataPacked) :
     name_(dataPacked.substr(10, 14)),//need implemantation
     surname_(dataPacked.substr(25, 14)),//need implemantation
-    PESEL_(dataPacked.substr(40, 11)),
-    sex_(dataPacked.substr(52, 1) == "M"),//need implemantation
+    PESEL_(dataPacked.substr(39, 11)),
+    sex_(dataPacked[51]),//need implemantation
     address_(dataPacked.substr(54, 40))//need implemantation
 {}
 /*{

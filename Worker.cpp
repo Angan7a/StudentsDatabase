@@ -21,7 +21,7 @@ Worker::Worker(const std::string & dataPacked) :
 std::string Worker::toString(char delimeter) const
 {
     std::stringstream ss;
-    ss << "Worker: "
+    ss << "Worker:  "
        << Person::toString(delimeter)
        << std::setw(7) << payment_ << " PLN" << std::endl;
     return ss.str();

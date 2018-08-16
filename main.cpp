@@ -7,7 +7,7 @@ int main()
 {
     Database db;
     
-    std::cout << "I try find person with PESEL - 123 - in empty database" << std::endl;
+    std::cout << "===== Try find person with PESEL - 123 - in empty database" << std::endl;
     try
     {
         db.findPersonWithPESEL("123");
@@ -20,16 +20,15 @@ int main()
     
     try
     {
-        db.fillDB(15, 18);
+        db.fillDB(5, 8);
         std::shared_ptr<Person> worker = std::make_shared<Worker>("Katarzyna", "Nowak", "12345678903", 'W', "Wroclaw, Staszica 12", 99789);
         db.addPerson(worker);
-        std::cout << "Show database" << std::endl;
+        std::cout << "===== Show database" << std::endl;
         db.showDB();
         std::cin.get();
-        std::cout << "Find data person with PESEL - 12345678903" << std::endl;
+        std::cout << "===== Find data person with PESEL - 12345678903" << std::endl;
         std::shared_ptr<Person> foundPerson = *(db.findPersonWithPESEL("12345678903"));
-        db.printNamesTable();
-        db.printDataPerson(foundPerson);
+        std::cout << foundPerson->toString();
     }
     catch(const std::exception & exc)
     {
@@ -39,12 +38,11 @@ int main()
     
     try
     {
-        std::cout << "Find persons with surname - Lis" << std::endl;                
+        std::cout << "===== Find persons with surname - Lis" << std::endl;                
         std::vector<std::shared_ptr<Person>> personsWithSurnames = db.findPersonWithSurname("Lis");
-        db.printNamesTable();
         for (auto person : personsWithSurnames)
         {
-            db.printDataPerson(person);
+            std::cout << person->toString();
         }
     }
     catch(const std::exception & exc)
@@ -55,17 +53,17 @@ int main()
 
     try
     {
-        std::cout << "Sort person by payment" << std::endl;
+        std::cout << "===== Sort person by payment" << std::endl;
         db.sortByPayment();
         db.showDB();
         std::cin.get();
 
-        std::cout << "Sort person by surname" << std::endl;
+        std::cout << "===== Sort person by surname" << std::endl;
         db.sortBySurname();
         db.showDB();
         std::cin.get();
 
-        std::cout << "Sort person by PESEL" << std::endl;
+        std::cout << "===== Sort person by PESEL" << std::endl;
         db.sortByPESEL();
         db.showDB();
         std::cin.get();
@@ -77,7 +75,7 @@ int main()
 
     try
     {
-        std::cout << "Save to file and 2 x read database" << std::endl;
+        std::cout << "===== Save to file and 2 x read database" << std::endl;
         db.saveToFile();
         db.readFromFile();
         db.readFromFile();
@@ -91,7 +89,7 @@ int main()
 
     try
     {
-        std::cout << "Change address and pwaymnet person with PESEL - 12345678903" << std::endl;
+        std::cout << "===== Change address and paymnet person with PESEL - 12345678903" << std::endl;
         db.changeAddressPaymentPersonWithPESEL("12345678903","Berlin",9000);
         db.showDB();
     }
@@ -103,7 +101,7 @@ int main()
 
     try
     {
-        std::cout << "Erase person with PESEL - 12345678903" << std::endl;
+        std::cout << "===== Erase person with PESEL - 12345678903" << std::endl;
         db.removePersonWithPESEL("12345678903");
         db.showDB();
     }
