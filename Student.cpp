@@ -15,7 +15,7 @@ Student::Student(const std::string & name,
 
 Student::Student(const std::string & dataPacked) :
     Person(dataPacked),
-    index_(std::stoi(dataPacked.substr(106, 7))) //needs implementation
+    index_(std::stoi(dataPacked.substr(106, 7)))
 {}
 
 std::string Student::toString(char delimeter) const

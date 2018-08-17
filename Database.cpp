@@ -209,14 +209,6 @@ void Database::getData(std::string & name,
         PESEL = pesel[getRandom(0, pesel.size() - 1)];
         if (Person::checkPESEL(PESEL)) break;
     }                              
-    //PESEL = std::to_string(getRandom(100000, 999999));
-    //PESEL += std::to_string(getRandom(10000, 99999));
-   // for (int i = 0; i < 10; i++)
-   // {
-    //    PESEL.pop_back();
-    //    PESEL += std::to_string(i);
-    //    if (Person::checkPESEL(PESEL)) break;
-    //}
     name = names[getRandom(0, names.size() - 1)];
     surname = surnames[getRandom(0, surnames.size() - 1)];
     address = cities[getRandom(0, cities.size() - 1)] + ", " 

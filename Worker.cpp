@@ -16,7 +16,7 @@ Worker::Worker(const std::string & name,
 
 Worker::Worker(const std::string & dataPacked) :
     Person(dataPacked),
-    payment_(std::stoi(dataPacked.substr(96, 7))) //needs implemantation
+    payment_(std::stoi(dataPacked.substr(96, 7)))
 {}
 std::string Worker::toString(char delimeter) const
 {

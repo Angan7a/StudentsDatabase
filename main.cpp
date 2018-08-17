@@ -27,8 +27,8 @@ int main()
         std::cout << "===== Show database" << std::endl;
         db.showDB();
         std::cin.get();
-        std::cout << "===== Find data person with PESEL - 12345678903" << std::endl;
-        std::shared_ptr<Person> foundPerson = *(db.findPersonWithPESEL("12345678903"));
+        std::cout << "===== Find data person with PESEL - 85091205707" << std::endl;
+        std::shared_ptr<Person> foundPerson = *(db.findPersonWithPESEL("85091205707"));
         std::cout << foundPerson->toString();
     }
     catch(const std::exception & exc)
@@ -90,8 +90,8 @@ int main()
 
     try
     {
-        std::cout << "===== Change address and paymnet person with PESEL - 12345678903" << std::endl;
-        db.changeAddressPaymentPersonWithPESEL("12345678903","Berlin",9000);
+        std::cout << "===== Change address and paymnet person with PESEL - 85091205707" << std::endl;
+        db.changeAddressPaymentPersonWithPESEL("85091205707","Berlin",9000);
         db.showDB();
     }
     catch(const std::exception & exc)
@@ -102,8 +102,8 @@ int main()
 
     try
     {
-        std::cout << "===== Erase person with PESEL - 12345678903" << std::endl;
-        db.removePersonWithPESEL("12345678903");
+        std::cout << "===== Erase person with PESEL - 85091205707" << std::endl;
+        db.removePersonWithPESEL("85091205707");
         db.showDB();
     }
     catch(const std::exception & exc)

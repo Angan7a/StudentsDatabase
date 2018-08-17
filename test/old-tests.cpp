@@ -1,8 +1,7 @@
-#define CATCH_CONFIG_MAIN 
-#include "Database.hpp"
-#include "Student.hpp"
-#include "Worker.hpp"
-#include "PeselValidation.hpp"
+#include "../Database.hpp"
+#include "../Student.hpp"
+#include "../Worker.hpp"
+#include "../PeselValidation.hpp"
 #include <iostream>
 #include "catch.hpp"
 

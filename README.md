@@ -4,12 +4,17 @@
 
 Compile and run the project:
     
+    mkdir build
+
+    cd build
+
+    cmake ..
+
     make
 
     ./db.out
 
 For test:
 
-    make test
+    ./db.out-ut-catch
 
-    ./test.out

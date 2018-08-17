@@ -19,18 +19,13 @@ Person::Person(const std::string & name,
 }
 
 Person::Person(const std::string & dataPacked) :
-    name_(dataPacked.substr(10, 14)),//need implemantation
-    surname_(dataPacked.substr(25, 14)),//need implemantation
+    name_(dataPacked.substr(10, 14)),
+    surname_(dataPacked.substr(25, 14)),
     PESEL_(dataPacked.substr(39, 11)),
-    sex_(dataPacked[51]),//need implemantation
-    address_(dataPacked.substr(54, 40))//need implemantation
+    sex_(dataPacked[51]),
+    address_(dataPacked.substr(54, 40))
 {}
-/*{
-    std::string PESEL; //need implemantation
-    if (!Person::checkPESEL(PESEL)) throw std::invalid_argument("Bad PESEL");
-    PESEL_(dataPacked.substr(40, 11));
-}
-*/
+
 std::string Person::getSurname() const
 {
     return surname_;
@@ -81,7 +76,7 @@ std::string Person::toString(char delimeter) const
     ss << std::setw(14) << name_ << delimeter
        << std::setw(14) << surname_ << delimeter
        << std::setw(11) << PESEL_ << delimeter
-       << std::setw(1) << static_cast<char>(sex_) << delimeter
+       << std::setw(1) << sex_ << delimeter
        << std::setw(40) << address_ << delimeter;
     return ss.str();
 }
