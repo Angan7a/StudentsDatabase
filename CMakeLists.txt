@@ -33,5 +33,5 @@ set(TEST_SRC_LIST
     test/tests-main.cpp
 )
 
-add_executable(${PROJECT_NAME}-ut-gtest ${TEST_SRC_LIST})
-target_link_libraries(${PROJECT_NAME}-ut-gtest ${PROJECT_NAME}-lib)
+add_executable(${PROJECT_NAME}-ut-catch ${TEST_SRC_LIST})
+target_link_libraries(${PROJECT_NAME}-ut-catch ${PROJECT_NAME}-lib)
