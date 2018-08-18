@@ -6,20 +6,20 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(db.out)
 
 set(SRC_LIST
-    Database.cpp
-    Database.hpp
-    Person.cpp
-    Person.hpp
-    PeselValidation.cpp
-    PeselValidation.hpp
-    Student.cpp
-    Student.hpp
-    Worker.cpp
-    Worker.hpp
+    src/Database.cpp
+    inc/Database.hpp
+    src/Person.cpp
+    inc/Person.hpp
+    src/PeselValidation.cpp
+    inc/PeselValidation.hpp
+    src/Student.cpp
+    inc/Student.hpp
+    src/Worker.cpp
+    inc/Worker.hpp
 )
 
 add_library(${PROJECT_NAME}-lib ${SRC_LIST})
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp)
 
 if (UNIX)
     target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib pthread)

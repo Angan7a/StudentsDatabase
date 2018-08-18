@@ -1,7 +1,7 @@
-#include "Database.hpp"
-#include "Person.hpp"
-#include "Worker.hpp"
-#include "PeselValidation.hpp"
+#include "../inc/Database.hpp"
+#include "../inc/Person.hpp"
+#include "../inc/Worker.hpp"
+#include "../inc/PeselValidation.hpp"
 #include <iostream>
 
 int main()

@@ -1,4 +1,4 @@
-#include "Worker.hpp"
+#include "../inc/Worker.hpp"
 #include <stdexcept>
 #include <sstream>
 #include <iomanip>

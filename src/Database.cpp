@@ -1,4 +1,4 @@
-#include "Database.hpp"
+#include "../inc/Database.hpp"
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
@@ -8,8 +8,8 @@
 #include <string>
 #include <sstream>
 #include <functional>
-#include "Student.hpp"
-#include "Worker.hpp"
+#include "../inc/Student.hpp"
+#include "../inc/Worker.hpp"
 
 void Database::addPerson(ptr person)
 {
