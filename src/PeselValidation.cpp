@@ -61,7 +61,7 @@ bool isChecksumValid(const std::string & pesel)
     return not (result % 10);
 }
 
-bool isPeselValid(const std::string pesel)
+bool isPeselValid(const std::string & pesel)
 {
     bool isValid = std::all_of(pesel.begin(), pesel.end(), [](auto c){ return std::isdigit(c); });
     int year = std::stoi(pesel.substr(0, 2));

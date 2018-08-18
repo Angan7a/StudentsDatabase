@@ -12,7 +12,7 @@ public:
            char sex,
            const std::string & address,
            int payment);
-    Worker(const std::string & dataPacked);
+    explicit Worker(const std::string & dataPacked);
     std::string toString(char delimeter = ' ') const override;
     int getPayment() const override;
     void setPayment(int payment) override;

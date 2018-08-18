@@ -12,7 +12,7 @@ public:
             char sex,
             const std::string & address,
             int index);
-    Student(const std::string & dataPacked);
+    explicit Student(const std::string & dataPacked);
     std::string toString(char delimeter = ' ')const override;
     int getIndex() const override;
     int getPayment() const override;
