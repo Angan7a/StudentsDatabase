@@ -28,9 +28,9 @@ else (UNIX)
 endif (UNIX)
 
 set(TEST_SRC_LIST
-    test/old-tests.cpp
-    test/tests-Database.cpp
-    test/tests-main.cpp
+    tests/old-tests.cpp
+    tests/tests-Database.cpp
+    tests/tests-main.cpp
 )
 
 add_executable(${PROJECT_NAME}-ut-catch ${TEST_SRC_LIST})
